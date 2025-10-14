@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+ <link rel="stylesheet" href="w3.css">
+
+</head>
+<style>
+h1 {
+  font-size: 50px;
+}
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #74ebd5, #9face6);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container {
+    background-color: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    max-height: 600px;
+  }
+
+  input {
+    padding: 15px;
+    width: 100%;
+    max-width: 500px;
+    height: 50px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  button:hover {
+    background-color: #357ab8;
+  }
+
+  #weatherResult {
+    margin-top: 20px;
+    font-size: 30px;
+    white-space: pre-line;
+  }
+
+  @media (max-width: 480px) {
+    input, button {
+      font-size: 14px;
+      height: auto;
+    }
+
+    #weatherResult {
+      font-size: 18px;
+    }
+  }
+</style>
+<script>
+  async function getWeather() {
+  const location = document.getElementById("locationInput").value;
+  const apiKey = "08cdef1b5d2043afbc5150506252309";
+  const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.error) {
+      document.getElementById("weatherResult").innerText = "Location not found.";
+    } else {
+      const temp = data.current.temp_c;
+      const condition = data.current.condition.text;
+      document.getElementById("weatherResult").innerText =
+        `🌍 Location: ${data.location.name}, ${data.location.country}\n🌡️ Temperature: ${temp}°C\n🌤️ Condition: ${condition}`;
+    }
+  } catch (error) {
+    document.getElementById("weatherResult").innerText = "Error fetching weather data.";
+  }
+}
+
+</script>
+<body>
+  <div class="container">
+    <h1>🌦️ Weather Checker</h1>
+    <br>
+    <input type="text" id="locationInput" placeholder="Enter location..." />
+    <br>
+    <br>
+    <button onclick="getWeather()">Check Weather </button>
+    <div id="weatherResult"></div>
+  </div>
+ 
+</body>
+</html>
