@@ -1,8 +1,9 @@
 async function getWeather() {
     const location = document.getElementById("locationInput").value;
     const apiKey = "08cdef1b5d2043afbc5150506252309";
-    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
-  
+    const url =  https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY
+ 
+
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -19,4 +20,5 @@ async function getWeather() {
       document.getElementById("weatherResult").innerText = "Error fetching weather data.";
     }
   }
+
   
