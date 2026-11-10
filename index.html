@@ -1,97 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
- <link rel="stylesheet" href="w3.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
-<style>
-h1 {
-  font-size: 20px;
-}
-  body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #74ebd5, #9face6);
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-  }
-
-  .container {
-    background-color: white;
-    padding: 30px;
-    width: 100%;
-    max-width: 800px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    max-height: 600px;
-  }
-
-  input {
-    padding: 15px;
-    width: 100%;
-    max-width: 500px;
-    height: 50px;
-    margin-bottom: 25px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-
-  button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #4a90e2;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    width: 100%;
-    max-width: 200px;
-  }
-
-  button:hover {
-    background-color: #357ab8;
-  }
-
-  #weatherResult {
-    margin-top: 20px;
-    font-size: 30px;
-    white-space: pre-line;
-  }
-
-  @media (max-width: 480px) {
-    input, button {
-      font-size: 14px;
-      height: auto;
-    }
-
-    #weatherResult {
-      font-size: 18px;
-    }
-  }
-</style>
-
 <body>
-  <div class="container">
-    <h1>🌦️ Weather Checker</h1>
-    <br>
-    <input type="text" id="locationInput" placeholder="Enter location..." />
-    <br>
-    <br>
-    <button onclick="getWeather()">Check Weather </button>
-    <div id="weatherResult"></div>
-  </div>
- <script src="script.js"> </script> 
+
+  <main class="weather-app">
+    <header>
+      <h2>☁ Weatherly</h2>
+      <p>Discover the weather today</p>
+    </header>
+
+    <div class="search-box">
+      <input
+        type="text"
+        id="locationInput"
+        placeholder="Search city..."
+      >
+      <button onclick="getWeather()">🔍</button>
+    </div>
+
+    <div id="weatherResult">
+      <div class="welcome">
+        <div class="big-icon">🌤️</div>
+        <h2>Welcome!</h2>
+        <p>Search your city to see the weather.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>Weatherly • Live Weather Updates</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
