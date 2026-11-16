@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone') {
+            steps {
+                echo 'Cloning...'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'pip install -r requirements.txt'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'python manage.py test'
+            }
+        }
+    }
+}
+        
